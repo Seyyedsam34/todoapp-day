@@ -3,10 +3,10 @@
  export interface valueProp{
      onAdd:(value:string)=>void,
      onChange:Task|null,
-     addAll:(value:boolean)=>void
+     onAllCheck:(value:boolean)=>void
  }
 
- function InputValue({onAdd,onChange,addAll}:valueProp){                                      
+ function InputValue({onAdd,onChange,onAllCheck}:valueProp){                                      
      const [value,setValue]=useState<string>("")
      const[isValue,setIsValue]=useState<boolean>(false)
      useEffect(()=>{
@@ -19,6 +19,10 @@
              onAdd(value)
              setValue("")
           }}
+          const handelAllcheck=()=>{
+            setIsValue(!isValue)
+            onAllCheck(isValue)
+          }
      return(
          <>
          <div>
@@ -33,7 +37,7 @@
          </div>
          <hr />
          <label>
-            <input type="checkbox" value={isValue} onChange={()=>setIsValue(!isValue)}/>
+            <input type="checkbox" checked={isValue} onChange={handelAllcheck}/>
             همه رو انجام دادم 
          </label>
          </>

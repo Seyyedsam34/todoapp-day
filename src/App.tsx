@@ -22,13 +22,17 @@ function App(){
   function onCheckBox(taskId:number){
     dispatch({type:"CHECKBOX_Task",id:taskId})
   }   
+  function onAllCheck(checked:boolean){
+    console.log(checked)
+  }
   function onEdite(task:Task){
     setUpdate(task)
   }
+
   return(
   <>
  
-  <InputValue onAdd={onAdd} onChange={update} />
+  <InputValue onAdd={onAdd} onChange={update} onAllCheck={iaValue}/>
   <ListShow onCheckBox={onCheckBox} 
     onEdite={onEdite}
     taskShow={tasks} 
