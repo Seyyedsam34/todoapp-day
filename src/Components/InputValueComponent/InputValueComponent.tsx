@@ -2,11 +2,13 @@
  import { Task } from "../../Reducers/Type"
  export interface valueProp{
      onAdd:(value:string)=>void,
-     onChange:Task|null
+     onChange:Task|null,
+     addAll:(value:boolean)=>void
  }
 
- function InputValue({onAdd,onChange}:valueProp){                                      
+ function InputValue({onAdd,onChange,addAll}:valueProp){                                      
      const [value,setValue]=useState<string>("")
+     const[isValue,setIsValue]=useState<boolean>(false)
      useEffect(()=>{
         if(onChange){
             setValue(onChange.title)
@@ -29,6 +31,11 @@
                  onClick={handelSubmit}
              >...بزن بریم</button></span>
          </div>
+         <hr />
+         <label>
+            <input type="checkbox" value={isValue} onChange={()=>setIsValue(!isValue)}/>
+            همه رو انجام دادم 
+         </label>
          </>
      )
  }

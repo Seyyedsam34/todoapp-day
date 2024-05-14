@@ -1,14 +1,11 @@
 import React, { useReducer, useState} from "react";
-import InputValue from"./Components/InputValueComponent/InputValueComponent"
-import reducer from "./Reducers/Reducer"
+import reducer from "./Reducers/Reducer";
 import ListShow from "./Components/ListShowComponent/ListShowComponent";
-
 import data from "./data/data";
 import { Task } from "./Reducers/Type";
-
-
+import InputValue from "./Components/InputValueComponent/InputValueComponent";
 function App(){
-   const [tasks,dispatch]=useReducer(reducer,data)
+  const [tasks,dispatch]=useReducer(reducer,data)
   const[update,setUpdate]=useState<Task| null>(null)
   function onAdd(value: string) {
     if(update){
@@ -30,14 +27,13 @@ function App(){
   }
   return(
   <>
-  <InputValue onAdd={onAdd} onChange={update} /> 
-
+ 
+  <InputValue onAdd={onAdd} onChange={update} />
   <ListShow onCheckBox={onCheckBox} 
     onEdite={onEdite}
     taskShow={tasks} 
     onDelete={onDelete} 
   />
-  
   </>
 )}
 export default App
